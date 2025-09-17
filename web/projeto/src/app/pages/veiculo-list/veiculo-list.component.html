@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="mat-elevation-z8 full-width-table">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="modelo">
+      <th mat-header-cell *matHeaderCellDef> Modelo </th>
+      <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="anoFabricacao">
+      <th mat-header-cell *matHeaderCellDef> Ano de Fabricação </th>
+      <td mat-cell *matCellDef="let element"> {{element.anoFabricacao}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="placa">
+      <th mat-header-cell *matHeaderCellDef> Placa </th>
+      <td mat-cell *matCellDef="let element"> {{element.placa}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acessorios">
+        <th mat-header-cell *matHeaderCellDef> Acessórios </th>
+            <td mat-cell *matCellDef="let element">
+        <ul *ngIf="element.acessorios && element.acessorios.length > 0; else noAcessorios">
+            <li *ngFor="let a of element.acessorios">{{ a.nome }}</li>
+        </ul>
+        <ng-template #noAcessorios>
+            <span>Nenhum acessório</span>
+        </ng-template>
+            </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acessorio-acoes">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+            <button routerLink="/veiculo/{{ element.id }}/add-acessorio">
+                <i class="material-icons add">add</i>
+            </button>
+        <ng-container *ngFor="let a of element.acessorios">
+        <button (click)="removeAcessorio(element.id, a.id)">
+          <i class="material-icons remove">remove</i>
+         </button>
+          </ng-container>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button routerLink="{{ element.id }}">
+          <i class="material-icons edit">edit</i>
+        </button>      
+        <button (click)="openDialog( element?.id, 'veiculo')">
+          <i class="material-icons delete">delete</i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+  
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page">
+  </mat-paginator>
+</div>
+
+
+</div>
+

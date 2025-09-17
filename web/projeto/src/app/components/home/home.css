@@ -1,0 +1,28 @@
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.button-row {
+  max-width: 1200px;
+  padding: 50px;
+}
+
+.button-flex-container {
+  display: flex;
+  gap: 150px;
+}
+
+.button {
+  width: 250px;
+  font-size: 20px;
+  font-family: Cambria;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: rgb(159, 159, 235);
+
+}
+

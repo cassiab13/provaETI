@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="veiculoForm" class="form">
+    <h1>Cadastrar veículo</h1>
+
+    <div class="form-container">
+      <div class="form-field">
+        <mat-form-field appearance="outline" hintLabel="*Modelo obrigatório" >
+          <mat-label>Modelo</mat-label>
+          <input matInput placeholder="Modelo" formControlName="modelo" />
+          <mat-error *ngIf="veiculoForm.get('modelo')?.invalid && veiculoForm.get('modelo')?.touched">
+            Modelo obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" hintLabel="Ano deve ser superior a 1980">
+          <mat-label>Ano de Fabricação</mat-label>
+          <input matInput min="1980" formControlName="anoFabricacao" />
+          <mat-error *ngIf="veiculoForm.get('anoFabricacao')?.invalid && veiculoForm.get('anoFabricacao')?.touched">
+            Ano de Fabricação obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" hintLabel="*Placa obrigatória">
+          <mat-label>Placa</mat-label>
+          <input matInput placeholder="Placa" formControlName="placa" />
+          <mat-error *ngIf="veiculoForm.get('placa')?.invalid && veiculoForm.get('placa')?.touched">
+            Placa obrigatória
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-row">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!validaCampos()"
+          (click)="create()"
+        >
+          Cadastrar
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          routerLink="/veiculos"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

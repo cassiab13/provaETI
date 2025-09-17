@@ -1,0 +1,64 @@
+<div class="container">
+  <form [formGroup]="form" class="form">
+    <h1>Atualizar {{ tipo | titlecase }}</h1>
+
+    <div class="form-container">
+      <div class="form-field" *ngIf="tipo === 'veiculo'">
+        <mat-form-field appearance="outline" hintLabel="*Modelo obrigatório">
+          <mat-label>Modelo</mat-label>
+          <input matInput placeholder="Modelo" formControlName="modelo" />
+          <mat-error *ngIf="form.get('modelo')?.invalid && form.get('modelo')?.touched">
+            Modelo obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" hintLabel="Ano deve ser superior a 1980">
+          <mat-label>Ano de Fabricação</mat-label>
+          <input matInput type="number" min="1980" formControlName="anoFabricacao" />
+          <mat-error *ngIf="form.get('anoFabricacao')?.invalid && form.get('anoFabricacao')?.touched">
+            Ano de Fabricação obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" hintLabel="*Placa obrigatória">
+          <mat-label>Placa</mat-label>
+          <input matInput placeholder="Placa" formControlName="placa" />
+          <mat-error *ngIf="form.get('placa')?.invalid && form.get('placa')?.touched">
+            Placa obrigatória
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-field" *ngIf="tipo === 'acessorio'">
+        <mat-form-field appearance="outline" hintLabel="*Nome obrigatório">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome do acessório" formControlName="nome" />
+          <mat-error *ngIf="form.get('nome')?.invalid && form.get('nome')?.touched">
+            Nome obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-row">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="update()"
+        >
+          Atualizar
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          routerLink="/{{ tipo === 'veiculo' ? 'veiculo' : 'acessorio' }}"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

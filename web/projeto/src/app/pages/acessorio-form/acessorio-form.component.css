@@ -1,0 +1,22 @@
+.container {
+  width: 400px;
+  margin: 2rem auto;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+button.mat-raised-button {
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+}

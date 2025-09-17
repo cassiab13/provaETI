@@ -1,7 +1,9 @@
 package com.prova.eti.services;
 
 import com.prova.eti.entities.Acessorio;
+import com.prova.eti.entities.Veiculo;
 import com.prova.eti.repositories.AcessorioRepository;
+import com.prova.eti.repositories.VeiculoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class AcessorioService {
 
     @Autowired
     private AcessorioRepository repository;
+
+    @Autowired
+    private VeiculoRepository veiculoRepository;
 
     public Acessorio create(Acessorio acessorio){
         return repository.save(acessorio);

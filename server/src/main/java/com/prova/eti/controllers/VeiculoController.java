@@ -55,9 +55,9 @@ public class VeiculoController {
         return ResponseEntity.ok().body(veiculo);
     }
 
-    @DeleteMapping("/{id}/remove-acessorio")
-    public ResponseEntity<Veiculo> removeAcessorio(@PathVariable Long id, @RequestBody Acessorio acessorio){
-        Veiculo veiculo = service.removeAcessorio(id, acessorio);
+    @DeleteMapping("/{veiculoId}/remove-acessorio/{acessorioId}")
+    public ResponseEntity<Veiculo> removeAcessorio(@PathVariable Long veiculoId, @PathVariable Long acessorioId){
+        Veiculo veiculo = service.removeAcessorio(veiculoId, acessorioId);
         return ResponseEntity.ok().body(veiculo);
     }
 }

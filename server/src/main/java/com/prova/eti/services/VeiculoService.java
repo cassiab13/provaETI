@@ -39,36 +39,31 @@ public class VeiculoService {
         veiculo1.setModelo(veiculo.getModelo());
         veiculo1.setAnoFabricacao(veiculo.getAnoFabricacao());
         veiculo1.setPlaca(veiculo.getPlaca());
-        veiculo1.setAcessorios(veiculo.getAcessorios());
-
         return repository.save(veiculo1);
     }
 
     public void delete(Long id){
-        Veiculo veiculo = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Veículo não encontrado"));
-        Set<Acessorio> acessorios = veiculo.getAcessorios();
-//        for(Acessorio acessorio: acessorios){
-//
-//        }
         repository.deleteById(id);
     }
 
     public Veiculo addAcessorio(Long id, Acessorio acessorio){
         Veiculo veiculo = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Veículo não encontrado"));
-        Set<Acessorio> acessorios = veiculo.getAcessorios();
+        List<Acessorio> acessorios = veiculo.getAcessorios();
         acessorioRepository.save(acessorio);
         acessorios.add(acessorio);
         return veiculo;
     }
 
-    public Veiculo removeAcessorio(Long idVeiculo, Acessorio acessorio){
+    public Veiculo removeAcessorio(Long idVeiculo, Long idAcessorio){
         Veiculo veiculo = repository.findById(idVeiculo)
                 .orElseThrow(() -> new EntityNotFoundException("Veículo não encontrado"));
-        Set<Acessorio> acessorios = veiculo.getAcessorios();
-        acessorios.remove(acessorio);
+        Acessorio acessorio = acessorioRepository.findById(idAcessorio)
+                .orElseThrow(() -> new EntityNotFoundException("Acessório não encontrado"));
+        veiculo.getAcessorios().remove(acessorio);
+        repository.save(veiculo);
         return veiculo;
     }
 
 }
+

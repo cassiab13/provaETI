@@ -1,0 +1,41 @@
+<div class="container">
+  <form [formGroup]="acessorioForm" class="form">
+    <h1>Cadastrar acessório</h1>
+
+    <div class="form-container">
+      <div class="form-field">
+        <mat-form-field appearance="outline" hintLabel="*Modelo obrigatório" >
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome" formControlName="nome" />
+          <mat-error *ngIf="acessorioForm.get('modelo')?.invalid && acessorioForm.get('modelo')?.touched">
+            Nome obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="button-row">
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!validaCampos()"
+          (click)="addAcessorio()"
+        >
+          Cadastrar
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          type="button"
+          routerLink="/veiculos"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+

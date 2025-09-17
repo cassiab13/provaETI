@@ -5,18 +5,19 @@
           <mat-icon class="icon">home</mat-icon>
           <span>Home</span>
         </a>
-        <a mat-list-item routerLink="/empregadores">
-          <mat-icon class="icon">account_circle</mat-icon>
+        <a mat-list-item routerLink="/veiculo">
+          <mat-icon class="icon">fire_truck</mat-icon>
           <span>Veículo</span>          
         </a>
-        <a mat-list-item routerLink="/empregado">
-          <mat-icon>person</mat-icon>
+        <a mat-list-item routerLink="/acessorio">
+          <mat-icon>apps</mat-icon>
           <span>Acessórios</span>
         </a>
     </mat-nav-list>
   </mat-drawer>
 
   <div class="sidenav-content">
+    <app-header></app-header>
     <button class= "button-icon" type="button" matButton (click)="drawer.toggle()" mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
