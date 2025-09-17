@@ -15,7 +15,7 @@
     <ng-container matColumnDef="acoes">
       <th mat-header-cell *matHeaderCellDef> Ações </th>
       <td mat-cell *matCellDef="let element">
-        <button routerLink="acessorio/update/{{ element.id }}">
+        <button routerLink="{{ element.id }}">
           <i class="material-icons edit">edit</i>
         </button>      
         <button (click)="openDialog( element?.id, 'acessorio')">
