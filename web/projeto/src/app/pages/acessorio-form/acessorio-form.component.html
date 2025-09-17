@@ -4,10 +4,10 @@
 
     <div class="form-container">
       <div class="form-field">
-        <mat-form-field appearance="outline" hintLabel="*Modelo obrigatório" >
+        <mat-form-field appearance="outline" hintLabel="*Nome obrigatório" >
           <mat-label>Nome</mat-label>
           <input matInput placeholder="Nome" formControlName="nome" />
-          <mat-error *ngIf="acessorioForm.get('modelo')?.invalid && acessorioForm.get('modelo')?.touched">
+          <mat-error *ngIf="acessorioForm.get('nome')?.invalid && acessorioForm.get('nome')?.touched">
             Nome obrigatório
           </mat-error>
         </mat-form-field>
